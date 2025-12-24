@@ -1,0 +1,47 @@
+.christmas-title-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+.christmas-title-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 16px 32px;
+  /* border: 2px solid #c92a2a; 圣诞红 */
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.25),
+    inset 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.decor {
+  font-size: 22px;
+  margin: 0 12px;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8));
+}
+
+.title-content {
+  text-align: center;
+}
+
+.christmas-title {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 2px;
+  font-weight: 700;
+
+  background: linear-gradient(180deg, #fff6c0, #ffd700, #ffb700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6), 0 0 14px rgba(255, 215, 0, 0.3);
+}
+
+.christmas-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #cfd8dc;
+  opacity: 0.85;
+}
