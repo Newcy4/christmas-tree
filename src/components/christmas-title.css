@@ -1,3 +1,15 @@
+.christmas-title-out-wrapper {
+  color: #ffd700;
+  font-family: "Noto Serif TC";
+  font-size: 40px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+}
+
 .christmas-title-wrapper {
   display: flex;
   justify-content: center;
@@ -44,4 +56,58 @@
   font-size: 14px;
   color: #cfd8dc;
   opacity: 0.85;
+}
+
+/* =========================
+   📱 Mobile Responsive
+   ========================= */
+
+/* 平板 & 手机 */
+@media (max-width: 768px) {
+  .christmas-title-out-wrapper {
+    top: 22%;
+  }
+  .christmas-title-wrapper {
+    margin: 20px 12px;
+  }
+
+  .christmas-title-frame {
+    padding: 12px 18px;
+    border-radius: 10px;
+  }
+
+  .decor {
+    font-size: 12px;
+    margin: 0 8px;
+  }
+
+  .christmas-title {
+    font-size: clamp(20px, 6vw, 26px);
+    letter-spacing: 1px;
+  }
+
+  .christmas-subtitle {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}
+
+/* 超小屏（iPhone SE / 老安卓） */
+@media (max-width: 360px) {
+  .christmas-title-frame {
+    padding: 10px 14px;
+  }
+
+  .decor {
+    display: none; /* 极小屏直接隐藏装饰，更干净 */
+  }
+
+  .christmas-title {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .christmas-subtitle {
+    font-size: 11px;
+  }
 }

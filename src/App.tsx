@@ -21,9 +21,11 @@ import {
 } from "@mediapipe/tasks-vision";
 // import { GradientTexture } from "@react-three/drei";
 import { ChristmasTitle } from "./components/ChristmasTitle";
+import GalleryPage from "./components/GalleryPage";
+import "./components/gallery-page.css";
 
 // --- 动态生成照片列表 (top.jpg + 1.jpg 到 31.jpg) ---
-const TOTAL_NUMBERED_PHOTOS = 147;
+const TOTAL_NUMBERED_PHOTOS = 139;
 // 修改：将 top.jpg 加入到数组开头
 const bodyPhotoPaths = [
   "/photos/top.jpeg",
@@ -830,6 +832,7 @@ export default function GrandTreeApp() {
   const [rotationSpeed, setRotationSpeed] = useState(0);
   const [aiStatus, setAiStatus] = useState("INITIALIZING...");
   const [debugMode, setDebugMode] = useState(false);
+  const [openGallery, setOpenGallery] = useState(false);
 
   return (
     <div
@@ -935,6 +938,29 @@ export default function GrandTreeApp() {
         </div> */}
       </div>
 
+      <button
+        onClick={() => setOpenGallery(!openGallery)}
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          zIndex: 10,
+          padding: "12px 30px",
+          backgroundColor: "rgba(0,0,0,0.5)",
+          border: "1px solid rgba(255, 215, 0, 0.5)",
+          color: "#FFD700",
+          fontFamily: "serif",
+          fontSize: "14px",
+          fontWeight: "bold",
+          letterSpacing: "3px",
+          textTransform: "uppercase",
+          cursor: "pointer",
+          backdropFilter: "blur(4px)",
+        }}
+      >
+        {openGallery ? "quit" : "show our memories"}
+      </button>
+
       {/* UI - Buttons */}
       <div
         style={{
@@ -983,17 +1009,18 @@ export default function GrandTreeApp() {
           {sceneState === "CHAOS" ? "Assemble Tree" : "Disperse"}
         </button>
         <div
-          style={{
-            color: "#FFD700",
-            fontFamily: "Noto Serif TC",
-            fontSize: "40px",
-            position: "fixed",
-            top: "10%",
-            left: "50%",
-            transform: "translate(-50%,-50%)",
-            pointerEvents: "none",
-            userSelect: "none",
-          }}
+          // style={{
+          //   color: "#FFD700",
+          //   fontFamily: "Noto Serif TC",
+          //   fontSize: "40px",
+          //   position: "fixed",
+          //   top: "10%",
+          //   left: "50%",
+          //   transform: "translate(-50%,-50%)",
+          //   pointerEvents: "none",
+          //   userSelect: "none",
+          // }}
+          className="christmas-title-out-wrapper"
         >
           <ChristmasTitle
             title="阿绿 & 阿四"
@@ -1020,7 +1047,15 @@ export default function GrandTreeApp() {
           borderRadius: "4px",
         }}
       >
-        {aiStatus}
+        <div style={{ width: "100%", textAlign: "center" }}>{aiStatus}</div>
+        {openGallery ? (
+          <div
+            style={{ zIndex: 99999, overflow: "auto" }}
+            className="gallery-wrapper"
+          >
+            <GalleryPage></GalleryPage>
+          </div>
+        ) : null}
       </div>
     </div>
   );
